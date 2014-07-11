@@ -1,0 +1,78 @@
+HTML CODE
+<!DOCTYPE html>
+<html>
+    <head>
+    <title> Persio</title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    
+    <body>
+        <div id = "game">
+            <div id = "board"> 
+            </div>
+            
+            <div id = "pieces">
+            </div>
+        </div>
+        
+        <div id = "meta">
+            <h1> Persio </h1>
+            <h4> Timer <span id = "remainingTime"> 5</span> mins </h2>
+            <h4> Points <span id= "points">0</span></h4>
+        </div>
+       
+    </body>
+</html>
+        =====================================================================
+        CSS CODE
+        
+        
+#board {
+    font-size: 0;
+    border: 1px solid black;
+    width: 340px;
+}
+
+.row {
+    display: block;
+}
+
+.tile {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+
+.white {
+    background-color: white;
+}
+
+.black {
+    background-color: red;
+}
+============================================
+JS CODE
+
+var rows = 21;
+var column = 17;
+
+var board = document.getElementById("board");
+
+for(var y = 0; y < rows; y++) {
+    var row = document.createElement("div");
+    row.className = "row";
+  
+    var useWhite = (y % 2 == 0);
+    for (var x = 0; x < rows; x++) {
+        var tile = document.createElement("div");
+
+        if (useWhite) tile.className = "tile white";
+        else tile.className = "tile red";
+        useWhite = !useWhite;
+
+        row.appendChild(tile);
+    }
+    board.appendChild(row);
+};
